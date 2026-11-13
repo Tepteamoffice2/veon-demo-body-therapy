@@ -1,0 +1,58 @@
+---
+import Section from "../Section.astro";
+import CallButton from "../CallButton.astro";
+import FutureLink from "../FutureLink.astro";
+import { FUTURE } from "../../data/studio";
+const sessions = Array.from({ length: 10 }, (_, i) => i + 1);
+---
+<Section id="reabilitatsiia" rec="R-UX6,R-UX5" class="section on-field">
+  <div class="container">
+    <div class="rehab__top">
+      <div class="head head--flush">
+        <h2 class="h2"><span class="nowrap">Реабілітація —</span> курсом, а не одним сеансом</h2>
+        <p class="lead">Після травми чи операції відновлюються поетапно: спершу консультація, далі план і серія сеансів.</p>
+      </div>
+      <div>
+        <p class="muted rehab__mix-label">Що входить у сеанси</p>
+        <ul class="rehab__mix">
+          <li>ЛФК</li>
+          <li>масаж</li>
+          <li>мануальна терапія</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="course" data-reveal>
+      <div class="course__bracket">
+        <p class="course__total">
+          <span class="course__total-text"><span>Курс із 10 сеансів</span> <strong>4500 грн</strong></span>
+          <span class="course__brace" aria-hidden="true"></span>
+        </p>
+      </div>
+      <ol class="course__line" aria-label="Етапи курсу">
+        <li class="seg seg--consult" style="--i:0"><span class="seg__bar" aria-hidden="true"></span><span class="seg__num">Консультація</span></li>
+        {sessions.map((n) => (
+          <li class="seg" style={`--i:${n}`}><span class="seg__bar" aria-hidden="true"></span><span class="seg__num"><span class="visually-hidden">Сеанс </span>{n}</span></li>
+        ))}
+      </ol>
+      <div class="course__legend">
+        <p><b>Консультація</b><br />60 хв, 400 грн</p>
+        <p><b>Сеанс</b><br />60–90 хв, 500–700 грн</p>
+      </div>
+    </div>
+
+    <div class="rehab__bottom">
+      <div>
+        <h3 class="rehab__h3">Знижки на реабілітацію</h3>
+        <ul class="discounts">
+          <li><span class="discount__fig">−15%</span><span class="discount__who">пенсіонерам і людям з інвалідністю</span></li>
+          <li><span class="discount__fig">−20%</span><span class="discount__who">ветеранам і військовим</span></li>
+        </ul>
+      </div>
+      <div class="rehab__cta">
+        <CallButton label="Записатися на консультацію" rec="R-UX3" />
+        <FutureLink note={FUTURE}>Детальніше про реабілітацію</FutureLink>
+      </div>
+    </div>
+  </div>
+</Section>

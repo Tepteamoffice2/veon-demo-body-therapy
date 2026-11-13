@@ -1,0 +1,30 @@
+---
+import FutureLink from "./FutureLink.astro";
+import { nav, contacts, FUTURE } from "../data/studio";
+const future = ["Відгуки", "Блог", "Питання і відповіді", "Абонементи", "Політика конфіденційності", "Умови використання"];
+const year = new Date().getFullYear();
+---
+<footer class="site-footer on-field" data-rec="R-UX5">
+  <div class="container">
+    <div class="footer__grid">
+      <nav class="footer__col" aria-label="Розділи сторінки, підвал">
+        <h2>На цій сторінці</h2>
+        <ul>{nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}</ul>
+      </nav>
+      <div class="footer__col">
+        <h2>Ще на сайті</h2>
+        <ul>{future.map((f) => <li><FutureLink note={FUTURE}>{f}</FutureLink></li>)}</ul>
+      </div>
+      <div class="footer__col">
+        <h2>Студія</h2>
+        <ul>
+          <li><a href={contacts.phoneHref}>{contacts.phoneIntl}</a></li>
+          <li><a href={contacts.map} rel="noopener" target="_blank">{contacts.street}, {contacts.city}</a></li>
+          <li><a href={`mailto:${contacts.email}`}>{contacts.email}</a></li>
+          <li><a href={contacts.instagram} rel="noopener" target="_blank">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer__legal">© {year} Body Therapy, студія масажу і реабілітації в Кременчуці.</p>
+  </div>
+</footer>

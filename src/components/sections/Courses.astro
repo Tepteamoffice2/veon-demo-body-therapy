@@ -1,0 +1,29 @@
+---
+import Section from "../Section.astro";
+import CallButton from "../CallButton.astro";
+import FutureLink from "../FutureLink.astro";
+import { courses, FUTURE } from "../../data/studio";
+---
+<Section id="kursy" rec="R-UX5" class="section section--paper-2">
+  <div class="container courses">
+    <div class="courses__head">
+      <h2 class="h2">Курси масажу</h2>
+      <p class="lead courses__lead">Для тих, хто хоче стати майстром. Навчання з нуля, 4 тижні.</p>
+    </div>
+    <div class="courses__body">
+      <ul class="courses__rows">
+        {courses.map((c) => (
+          <li>
+            <span class="courses__name">{c.name}</span>
+            <span class="courses__detail">{c.detail}</span>
+            <span class="courses__price">{c.price} грн</span>
+          </li>
+        ))}
+      </ul>
+      <div class="actions">
+        <CallButton tone="outline" label="Запитати про курс" />
+        <FutureLink note={FUTURE}>Програма курсу</FutureLink>
+      </div>
+    </div>
+  </div>
+</Section>

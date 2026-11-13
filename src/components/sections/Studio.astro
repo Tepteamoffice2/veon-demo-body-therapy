@@ -1,0 +1,42 @@
+---
+import { Picture } from "astro:assets";
+import Section from "../Section.astro";
+import FutureLink from "../FutureLink.astro";
+import Icon from "../Icon.astro";
+import portrait from "../../assets/zhanna.jpg";
+import { contacts, FUTURE } from "../../data/studio";
+---
+<Section id="studiia" rec="R-UX2,R-UX9,R-UX11,MA-R005" class="section">
+  <div class="container studio">
+    <div class="studio__text">
+      <h2 class="h2 studio__statement">Руками, без апаратів. 60–90 хвилин.</h2>
+      <p>Кожну процедуру майстер робить руками, а тривалість сеансу видно в прайсі заздалегідь. Студію заснувала і веде Жанна Юріївна, у неї понад 15 років досвіду в оздоровчих послугах.</p>
+      <p>У команді — майстри з медичною освітою у сфері реабілітації або фізичної терапії.</p>
+      <dl class="studio__facts">
+        <div><dt>15+ років</dt><dd>досвід засновниці</dd></div>
+        <div><dt>60–90 хв</dt><dd>тривалість сеансу</dd></div>
+        <div><dt>Руками</dt><dd>без апаратів</dd></div>
+      </dl>
+      <div class="studio__links">
+        <a class="ulink" href={contacts.instagram} rel="noopener" target="_blank" data-rec="R-SP11">
+          <Icon name="instagram" size={20} />
+          <span class="ulink__text">Команда, до і після, відгуки — в Instagram</span>
+        </a>
+        <FutureLink note={FUTURE}>Про студію</FutureLink>
+      </div>
+    </div>
+    <figure class="portrait">
+      <Picture
+        src={portrait}
+        formats={["avif", "webp"]}
+        width={336}
+        height={420}
+        alt="Жанна Юріївна в масажному кабінеті студії"
+        loading="lazy"
+        decoding="async"
+        data-rec="R-SP2"
+      />
+      <figcaption><b>Жанна Юріївна</b>засновниця і керівниця студії, 15+ років досвіду</figcaption>
+    </figure>
+  </div>
+</Section>

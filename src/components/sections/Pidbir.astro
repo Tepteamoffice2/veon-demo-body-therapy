@@ -1,0 +1,49 @@
+---
+import Section from "../Section.astro";
+import CallButton from "../CallButton.astro";
+import FutureLink from "../FutureLink.astro";
+import { requests, FUTURE } from "../../data/studio";
+---
+<Section id="pidbir" rec="R-UX6" class="section">
+  <div class="container">
+    <div class="head head--split">
+      <h2 class="h2">З чим ви прийшли?</h2>
+      <p class="lead">Оберіть, що турбує. Покажемо процедури, скільки хвилин триває кожна і скільки коштує.</p>
+    </div>
+
+    <div class="pick" data-tabs>
+      <div class="tabs" role="tablist" aria-label="Запит" aria-orientation="vertical">
+        {requests.map((r, i) => (
+          <button class="tab" type="button" role="tab" id={`tab-${r.id}`} aria-controls={`panel-${r.id}`} aria-selected={i === 0 ? "true" : "false"} tabindex={i === 0 ? 0 : -1}>
+            <span class="tab__mark" aria-hidden="true"></span>
+            <span>{r.label}</span>
+          </button>
+        ))}
+      </div>
+
+      <div class="panels">
+        {requests.map((r) => (
+          <div class="panel" id={`panel-${r.id}`} role="tabpanel" aria-labelledby={`tab-${r.id}`} tabindex="0">
+            <h3 class="panel__title">{r.label}</h3>
+            <p class="panel__answer">{r.answer}</p>
+            <ul class="rx">
+              {r.items.map((it) => (
+                <li class="rx__item">
+                  <span class="rx__min">{it.min}<span class="rx__unit">хв</span></span>
+                  <span class="rx__name">{it.name}{it.note && <span class="rx__note">{it.note}</span>}</span>
+                  <span class="rx__price">{it.price} грн</span>
+                  <span class="rx__call"><CallButton tone="outline" /></span>
+                </li>
+              ))}
+            </ul>
+            <div class="panel__more">
+              {r.more && <a class="ulink" href={r.more.href}><span class="ulink__text">{r.more.label}</span></a>}
+              <a class="ulink" href="#tsiny"><span class="ulink__text">Повний прайс</span></a>
+              <FutureLink note={FUTURE}>Опис кожного масажу</FutureLink>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</Section>

@@ -1,0 +1,111 @@
+/* Hallmark · shape: marquee-hero · genre: editorial · theme: custom · job: book · idea: "Сайт говорить як реабілітолог на першому прийомі: питає, що турбує, і відповідає процедурою, хвилинами й ціною" · vibe: "глибока ялина, тепла олія, точні цифри" · paper: #EEF2EF / field #17352C · accent: #E2A43B · display: Piazzolla · body: Onest · hero: типографський постер на ялині, вісь ліворуч, без зображення · nav: темна фіксована шапка з 7 якорями і дзвінком · footer: продовження поля контактів · imagery: client photos (портрет засновниці) · signature: цифри хвилин біля кожної послуги і лінія курсу з 10 сеансів · axes: light/roman-serif/chromatic-amber · posture: committed · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H5 E4 S5 R4 V4 · weakest: E, лише один реальний знімок клієнта (кроп зі скриншота 1x); показуємо його не більше рідного розміру, решту несе типографіка */
+/* Hallmark · answered F4 · amber fills the call only on the dark field and the field green fills it only on light paper, never both on one background; concept rule: the call is the most contrasting control on its own background, amber on light paper is 1.9:1 */
+/* Hallmark · dismissed 49 · every .btn sets white-space: nowrap in site.css, and the call number switches to its short local form under 40rem */
+/* Hallmark · waive 44c · the hero ends near 710px of a 900px screen · the concept and the project lead want the next question «З чим ви прийшли?» visible under the hero, the action of a book page is its next step */
+/* Client design tokens: only from design/concept.md (veon-concept: colors, fonts). */
+:root {
+  /* colour roles */
+  --color-field: #17352C;
+  --color-field-2: #1F4539;
+  --color-bg: #EEF2EF;
+  --color-paper-2: #E1E8E3;
+  --color-text: #13221D;
+  --color-muted: #4A5A53;
+  --color-muted-on-field: #B4C4BB;
+  --color-rule: #C9D3CD;
+  --color-accent: #E2A43B;
+  --color-on-accent: #13221D;
+  --color-accent-ink: var(--color-on-accent);
+  --color-focus-light: #8A5300;
+  --color-focus-on-field: #E2A43B;
+  --color-on-field: #EEF2EF;
+  --color-accent-hover: color-mix(in srgb, var(--color-accent) 82%, var(--color-on-field));
+  --color-rule-on-field: color-mix(in srgb, var(--color-muted-on-field) 38%, var(--color-field));
+  --focus: var(--color-focus-light);
+
+  /* type */
+  --font-display: "Piazzolla", "Piazzolla Fallback", Georgia, serif;
+  --font-body: "Onest", "Onest Fallback", Arial, sans-serif;
+  --text-caption: 0.9375rem;                                  /* 15 */
+  --text-body: 1.0625rem;                                     /* 17 */
+  --text-title: 1.375rem;                                     /* 22 */
+  --text-section: clamp(2rem, 1.55rem + 1.6vw, 2.75rem);      /* 32 to 44 */
+  --text-figure: clamp(2.75rem, 2.1rem + 2.2vw, 4rem);        /* 44 to 64 */
+  --text-display: clamp(2.75rem, 1.4rem + 5.2vw, 5.75rem);    /* 44 to 92 */
+  --lh-display: 1.04;
+  --lh-tight: 1.15;
+  --lh-body: 1.55;
+
+  /* space, 4/8 rhythm */
+  --s-1: 0.25rem;  /* 4 */
+  --s-2: 0.5rem;   /* 8 */
+  --s-3: 0.75rem;  /* 12 */
+  --s-4: 1rem;     /* 16 */
+  --s-5: 1.5rem;   /* 24 */
+  --s-6: 2.5rem;   /* 40 */
+  --s-7: 4rem;     /* 64 */
+  --s-8: 6rem;     /* 96 */
+  --s-9: 9rem;     /* 144 */
+  --section-y: clamp(4rem, 2.4rem + 5vw, 7.5rem);
+  --gutter: clamp(1.25rem, 5vw, 7.5rem);
+  --gap: 1.5rem;
+  --space: var(--gutter);
+  --container: 85rem; /* 1360 */
+  --header-h: 4rem;
+
+  /* shape */
+  --radius: 4px;
+  --hairline: 1px;
+  --tap: 2.75rem;     /* 44 */
+  --btn-h: 3.5rem;    /* 56 on phones */
+
+  /* motion */
+  --ease-out: cubic-bezier(.2, .7, .2, 1);
+  --ease-in: cubic-bezier(.5, 0, .75, 0);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long: 420ms;
+  --dur: 600ms;
+}
+
+@media (min-width: 60rem) {
+  :root { --header-h: 4.5rem; --btn-h: 3rem; }
+}
+
+@font-face {
+  font-family: "Piazzolla";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/piazzolla-cyrillic-wght-normal.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Piazzolla";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/piazzolla-latin-wght-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Onest";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/onest-cyrillic-wght-normal.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Onest";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/onest-latin-wght-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* metric fallbacks: keep the swap from shifting the layout */
+@font-face { font-family: "Piazzolla Fallback"; src: local("Georgia"); size-adjust: 96%; ascent-override: 98%; descent-override: 27%; line-gap-override: 0%; }
+@font-face { font-family: "Onest Fallback"; src: local("Arial"); size-adjust: 102%; ascent-override: 94%; descent-override: 25%; line-gap-override: 0%; }

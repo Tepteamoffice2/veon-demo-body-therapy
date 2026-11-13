@@ -1,0 +1,13 @@
+---
+// Phones only: one bottom bar instead of three floating widgets (R-UX4). Shows once the hero has gone.
+import CallButton from "./CallButton.astro";
+import Icon from "./Icon.astro";
+import { contacts } from "../data/studio";
+---
+<div class="callbar on-field" data-callbar data-rec="R-UX4">
+  <CallButton block />
+  <a class="btn btn--outline-light btn--block" href={contacts.instagram} rel="noopener" target="_blank" data-rec="R-SP11">
+    <Icon name="instagram" size={20} />
+    <span>Instagram</span>
+  </a>
+</div>

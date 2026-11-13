@@ -1,0 +1,27 @@
+---
+import Section from "../Section.astro";
+import CallButton from "../CallButton.astro";
+import Icon from "../Icon.astro";
+import { contacts } from "../../data/studio";
+---
+<Section id="holovna" rec="R-UX1" class="hero on-field">
+  <div class="container hero__inner">
+    <h1 class="hero__title" data-rec="R-SEO1,R-SEO2,R-SP3,R-SP5,R-SP7,G-R004,MA-R004"><span class="hero__line" style="--i:0">Масаж і реабілітація</span> <span class="hero__line" style="--i:1">в <span class="nowrap">Кременчуці —</span></span> <span class="hero__line hero__line--sub" style="--i:2">студія Body Therapy</span></h1>
+
+    <div class="hero__base">
+      <p class="hero__lead" style="--i:3">Лікувальний і відновлювальний масаж руками, без апаратів, та реабілітація курсом. Записуємо за телефоном.</p>
+      <div class="hero__actions" style="--i:4">
+        <CallButton number rec="R-UX3" />
+        <a class="btn btn--outline-light hero__pick" href="#pidbir">
+          <span>Підібрати масаж</span>
+          <Icon name="arrow-down" size={18} />
+        </a>
+      </div>
+      <dl class="hero__facts" style="--i:5">
+        <div><dt>Адреса</dt><dd>{contacts.street}</dd></div>
+        <div><dt>Графік</dt><dd>Щодня 9:00–20:00</dd></div>
+        <div><dt>Для орієнтиру</dt><dd>Масаж спини, 40 хв — 800 грн</dd></div>
+      </dl>
+    </div>
+  </div>
+</Section>

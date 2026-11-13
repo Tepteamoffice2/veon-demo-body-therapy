@@ -1,0 +1,29 @@
+---
+import Section from "../Section.astro";
+import CallButton from "../CallButton.astro";
+import Icon from "../Icon.astro";
+import { certificates, contacts } from "../../data/studio";
+---
+<Section id="sertyfikaty" class="section">
+  <div class="container">
+    <div class="head head--split">
+      <h2 class="h2">Подарунковий сертифікат</h2>
+      <p class="lead">Діє 6 місяців, є електронна версія. Оформити можна за телефоном або в Instagram.</p>
+    </div>
+    <ul class="certs">
+      {certificates.map((c) => (
+        <li class="cert">
+          <span class="cert__value">{c.value}<span class="cert__unit">грн</span></span>
+          <span class="cert__what">{c.what}</span>
+        </li>
+      ))}
+    </ul>
+    <div class="actions certs__actions">
+      <CallButton tone="field" label="Замовити сертифікат" />
+      <a class="ulink" href={contacts.instagram} rel="noopener" target="_blank" data-rec="R-SP11">
+        <Icon name="instagram" size={20} />
+        <span class="ulink__text">Написати в Instagram</span>
+      </a>
+    </div>
+  </div>
+</Section>

@@ -1,0 +1,30 @@
+---
+// The one action of the page: a real call. Amber on the field, ялина on light paper (concept §5, "правило дзвінка").
+import Icon from "./Icon.astro";
+import { contacts } from "../data/studio";
+interface Props {
+  label?: string;
+  tone?: "amber" | "field" | "outline" | "outline-light";
+  /** show the number next to the label: intl on wide screens, local on phones */
+  number?: boolean;
+  block?: boolean;
+  rec?: string;
+  class?: string;
+}
+const { label = "Подзвонити", tone = "amber", number = false, block = false, rec, class: cls } = Astro.props;
+---
+<a
+  class:list={["btn", `btn--${tone}`, { "btn--block": block }, cls]}
+  href={contacts.phoneHref}
+  data-rec={rec}
+  data-call
+>
+  <Icon name="phone" size={20} />
+  <span class="btn__label">{label}</span>
+  {number && (
+    <span class="btn__num">
+      <span class="num-intl">{contacts.phoneIntl}</span>
+      <span class="num-local">{contacts.phoneLocal}</span>
+    </span>
+  )}
+</a>

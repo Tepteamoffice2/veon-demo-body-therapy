@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+import FutureLink from "./FutureLink.astro";
+import CallButton from "./CallButton.astro";
+import Icon from "./Icon.astro";
+import logoMark from "../assets/logo-mark.png";
+import { nav, contacts, FUTURE } from "../data/studio";
+---
+<header class="site-header on-field" data-rec="R-UX5,R-UX3">
+  <div class="container header-row">
+    <a class="brand" href="#top" data-rec="R-SP1">
+      <Image src={logoMark} alt="" width={32} height={30} loading="eager" class="brand__mark" />
+      <span class="brand__word">Body Therapy</span>
+    </a>
+
+    <nav class="nav" aria-label="Розділи сторінки">
+      <ul class="nav__list">
+        {nav.map((n) => <li><a class="nav__link" href={n.href}>{n.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <div class="lang" data-rec="R-UX7">
+      <span class="lang__current" aria-current="true">УКР</span>
+      <span class="lang__sep" aria-hidden="true">/</span>
+      <FutureLink note={FUTURE} class="lang__other">РУС</FutureLink>
+    </div>
+
+    <a class="header-phone" href={contacts.phoneHref}>{contacts.phoneIntl}</a>
+    <CallButton class="header-call" />
+
+    <button class="burger" type="button" popovertarget="menu" aria-controls="menu">
+      <Icon name="menu" size={24} />
+      <span class="visually-hidden">Меню</span>
+    </button>
+  </div>
+
+  <div id="menu" class="sheet on-field" popover aria-label="Меню">
+    <div class="sheet__top container">
+      <span class="brand__word">Body Therapy</span>
+      <button class="burger" type="button" popovertarget="menu" popovertargetaction="hide">
+        <Icon name="close" size={24} />
+        <span class="visually-hidden">Закрити меню</span>
+      </button>
+    </div>
+    <nav class="sheet__nav container" aria-label="Меню розділів">
+      <ul>
+        {nav.map((n) => <li><a class="sheet__link" href={n.href}>{n.label}</a></li>)}
+      </ul>
+    </nav>
+    <div class="sheet__foot container">
+      <p class="sheet__meta">{contacts.street}, {contacts.hours}</p>
+      <CallButton number block />
+      <div class="lang lang--sheet">
+        <span class="lang__current" aria-current="true">УКР</span>
+        <span class="lang__sep" aria-hidden="true">/</span>
+        <FutureLink note={FUTURE} class="lang__other">РУС</FutureLink>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,57 @@
+---
+import Section from "../Section.astro";
+import CallButton from "../CallButton.astro";
+import FutureLink from "../FutureLink.astro";
+import { priceGroups, subscriptions, payment, FUTURE } from "../../data/studio";
+---
+<Section id="tsiny" rec="R-UX8" class="section section--paper-2">
+  <div class="container">
+    <div class="head head--split">
+      <h2 class="h2">Усі масажі й ціни</h2>
+      <p class="lead">П’ятнадцять процедур одним списком. Ціна вказана за один сеанс.</p>
+    </div>
+
+    <div class="prices" data-prices>
+      {priceGroups.map((g) => (
+        <details class="pg" open>
+          <summary class="pg__sum">
+            <h3>{g.title}</h3>
+            <svg class="pg__chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" /></svg>
+          </summary>
+          <table class="ptable">
+            <caption class="visually-hidden">{g.title}: тривалість і ціна</caption>
+            <tbody>
+              {g.items.map((it) => (
+                <tr>
+                  <th scope="row">{it.name}{it.note && <span class="ptable__note">{it.note}</span>}</th>
+                  <td>{it.min} хв</td>
+                  <td class="ptable__price">{it.price} грн</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </details>
+      ))}
+    </div>
+
+    <div class="prices__extra">
+      <div>
+        <h3 class="prices__h3">Абонементи</h3>
+        <ul class="subs">
+          {subscriptions.map((s) => (
+            <li><span class="subs__n">Абонемент на {s.sessions}</span><span class="subs__v">{s.valid}</span><span class="subs__off">{s.off}</span></li>
+          ))}
+        </ul>
+        <p class="prices__note">
+          <span>Вартість абонемента на вашу процедуру підкажемо за телефоном.</span>
+          <FutureLink note={FUTURE}>Умови абонементів</FutureLink>
+        </p>
+      </div>
+      <div class="prices__pay">
+        <h3 class="prices__h3">Оплата</h3>
+        <p>{payment}</p>
+        <CallButton tone="field" label="Записатися за телефоном" />
+      </div>
+    </div>
+  </div>
+</Section>

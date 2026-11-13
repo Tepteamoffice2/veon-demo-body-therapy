@@ -1,0 +1,22 @@
+{
+  "name": "veon-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "postbuild": "node scripts/veon-event.mjs demo_build",
+    "typecheck": "astro check",
+    "test:e2e": "node tests/e2e/home.e2e.mjs http://127.0.0.1:4399/"
+  },
+  "engines": {
+    "node": ">=18.20.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "astro": "5.14.1",
+    "typescript": "^5.9.3"
+  }
+}

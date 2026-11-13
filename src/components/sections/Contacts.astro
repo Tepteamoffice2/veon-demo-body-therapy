@@ -1,0 +1,37 @@
+---
+import Section from "../Section.astro";
+import CallButton from "../CallButton.astro";
+import Icon from "../Icon.astro";
+import { contacts } from "../../data/studio";
+---
+<Section id="kontakty" rec="R-UX10" class="section on-field contacts-section">
+  <div class="container contacts">
+    <div class="contacts__where">
+      <h2 class="h2 contacts__addr">{contacts.street}<span class="contacts__city">{contacts.city}, {contacts.postal}</span></h2>
+      <p class="contacts__hours"><Icon name="clock" size={22} />Щодня 9:00–20:00</p>
+      <p class="contacts__home">Масаж на дому — в межах Кременчука.</p>
+      <a class="btn btn--outline-light contacts__map" href={contacts.map} rel="noopener" target="_blank">
+        <Icon name="pin" size={20} />
+        <span>Відкрити на карті</span>
+      </a>
+    </div>
+    <div class="contacts__reach">
+      <p class="muted">Запис і питання — за телефоном</p>
+      <CallButton number rec="R-UX3" />
+      <ul class="contacts__list">
+        <li>
+          <a class="ulink" href={contacts.instagram} rel="noopener" target="_blank" data-rec="R-SP11">
+            <Icon name="instagram" size={20} />
+            <span class="ulink__text">Instagram {contacts.instagramHandle}</span>
+          </a>
+        </li>
+        <li>
+          <a class="ulink" href={`mailto:${contacts.email}`} data-rec="R-UX10">
+            <Icon name="mail" size={20} />
+            <span class="ulink__text">{contacts.email}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</Section>
